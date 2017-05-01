@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 import re
 
-
+#定义一个叫pepei的类，实现统计文章中出现的词库中词的次数并显示
 class pipei():
     def __init__(self,amount,n,k,t,all):
         self.amount = amount
@@ -9,7 +9,7 @@ class pipei():
         self.k = k
         self.t = t
         self.all = all
-
+#定义一个叫count的函数，通过re.findall匹配某个词库中的词在文章中出现的次数，并返回匹配到的次数amount
     def count(self,wl):
         file = open('/home/lin/文档/zuoye/太空旅客.txt', 'rw+')
         txt = file.read()
@@ -18,7 +18,7 @@ class pipei():
             same = re.findall(word, txt)
             self.amount = self.amount + len(same)
         return self.amount
-
+#定义一个countf的函数，打印出某个类型里每个词库名称和词库中的词在文章中出现的次数和这个类型中的词在文章中出现总个数all
     def countf(self):
         for i in range(self.n):
             wl = self.t[i]
@@ -27,10 +27,13 @@ class pipei():
         print self.k[(self.n+1)],'总计',self.all
 
 
-
+#初始化参数
 amount = 0
 all = 0
+
+#定义一个类型k列表，存放这个类型里的词库名称，最后存放这个类型的名称
 k0 = ['反派','角色','角色中的其他','男主角','女主角','配角','角色']
+#定义一个列表t，存放词库文本
 f0 = open('/home/lin/文档/zuoye/角色/反派.txt','rw+')
 f1 = open('/home/lin/文档/zuoye/角色/角色.txt','rw+')
 f2 = open('/home/lin/文档/zuoye/角色/角色中的其他.txt','rw+')
@@ -38,6 +41,7 @@ f3 = open('/home/lin/文档/zuoye/角色/男主角.txt','rw+')
 f4 = open('/home/lin/文档/zuoye/角色/女主角.txt','rw+')
 f5 = open('/home/lin/文档/zuoye/角色/配角.txt','rw+')
 t0 = [f0,f1,f2,f3,f4,f5]
+#定义整数型n，表示词库个数
 n0 = len(t0)-1
 result = pipei(amount,n0,k0,t0,all)
 result.countf()
